@@ -1,0 +1,148 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | CREATIVE</title>
+    <link href="~/CustomStyleSheet/footer.css" rel="stylesheet" />
+    <link href="~/CustomStyleSheet/home.css" rel="stylesheet" />
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+
+</head>
+<body>
+    <nav class="navbar">
+        <ul class="links-container">
+            <li class="link-item">@Html.ActionLink("Home", "Index", "Home", new { @class = "link " })
+            <li class="link-item">@Html.ActionLink("SignIn/SignUp", "Register", "Home", new { @class = "link" })
+            <li class="link-item">@Html.ActionLink("Contact", "Contact", "Home", new { @class = "link  active" })
+            <li class="link-item">@Html.ActionLink("About Us", "About", "Home", new { @class = "link" })
+        </ul>
+    </nav>
+
+    <!-- Contacts Section -->
+
+    <section class="contact py-5 bg-light" id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>Get in touch</h4>
+                    <hr>
+                </div>
+                <div class="col-md-6">
+                    <div class="address">
+
+                        <h5>Address:</h5>
+                        <ul class="list-unstyled">
+                            <li> GadgeticWorld Customer Relations</li>
+                            <li> Near SIPCOT IT Park</li>
+                            <li> Chennai, Tamil Nadu</li>
+                        </ul>
+                        <p>Please don't send anything to this address.</p>
+                    </div>
+                    <div class="email">
+                        <h5>Email:</h5>
+                        <ul class="list-unstyled">
+                            <li> info@email.com</li>
+                            <li> info@email.com</li>
+                        </ul>
+                    </div>
+                    <div class="phone">
+                        <h5>Phone:</h5>
+                        <ul class="list-unstyled">
+                            <li> +91- 8800XXXXXX34</li>
+                            <li> +91- 8800XXXXXX34</li>
+                        </ul>
+                    </div>
+                    <hr>
+                    <div class="social">
+                        <ul class="list-inline list-unstyled">
+                            <li class="list-inline-item">
+                                <a href="#"><i class="fa fa-facebook-square fa-2x"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="#"><i class="fa fa-google-plus-square fa-2x"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="#"><i class="fa fa-youtube-play fa-2x"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h4>Send Your Request:</h4>
+                    <div class="card">
+                        <div class="card-body">
+                            <form>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <input id="Full Name" name="Full Name" placeholder="Full Name" class="form-control" type="text">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <input id="Mobile No." name="Mobile No." placeholder="Mobile No." class="form-control" required="required" type="text">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <input id="Mobile No." name="Mobile No." placeholder="Address" class="form-control" required="required" type="text">
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <textarea id="comment" name="comment" cols="40" rows="5" placeholder="Your Message" class="form-control"></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <button type="button" class="btn btn-danger">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- footer Section -->
+    <footer>
+        <div class="footer-content">
+            <img src="img/light-logo.png" class="logo" alt="">
+            <div class="footer-ul-container">
+                <ul class="category">
+                    <li class="category-title">Contacts</li>
+                    <li><a href="/Home/About" class="footer-link">About us</a></li>
+                    <br>
+                    <li><a href="/Home/Contact" class="footer-link">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+        <p class="footer-title">About Company</p>
+        <p class="info">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellat tempore ad suscipit, eos eius quisquam sed optio nisi quaerat fugiat ratione et vero maxime praesentium, architecto minima reiciendis iste quo deserunt assumenda alias ducimus. Ullam odit maxime id voluptates rerum tenetur corporis laboriosam! Cum error ipsum laborum tempore in rerum necessitatibus nostrum nobis modi! Debitis adipisci illum nemo aperiam sed, et accusamus ut officiis. Laborum illo exercitationem quo culpa reprehenderit excepturi distinctio tempore cupiditate praesentium nisi ut iusto, assumenda perferendis facilis voluptas autem fuga sunt ab debitis voluptatum harum eum. Asperiores, natus! Est deserunt incidunt quasi placeat omnis, itaque harum?</p>
+        <p class="info">support emails - gadget@me.com, customersupport@gadget.com</p>
+        <p class="info">telephone - 9938388211, 8893883943</p>
+        <div class="footer-social-container">
+            <div>
+                <a href="#" class="social-link">terms & services</a>
+                <a href="#" class="social-link">privacy page</a>
+            </div>
+            <div>
+                <a href="#" class="social-link">instagram</a>
+                <a href="#" class="social-link">facebook</a>
+                <a href="#" class="social-link">twitter</a>
+            </div>
+        </div>
+        <p class="footer-credit">Best of Best Gadget Collections online website. Copyright &copy; @DateTime.Now.Year</p>
+    </footer>
+</body>
+</html>
+

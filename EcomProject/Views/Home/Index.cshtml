@@ -1,0 +1,328 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="Wiewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome | Home</title>
+    <link href="~/CustomStyleSheet/home.css" rel="stylesheet" />
+    <link href="~/CustomStyleSheet/nav.css" rel="stylesheet" />
+    <link href="~/CustomStyleSheet/footer.css" rel="stylesheet" />
+
+</head>
+<body>
+    <!-- Navigation Section -->
+    <nav class="navbar">
+        <div class="nav">
+            <a href="index.html"><img src="Images/web_logo.jpg" class="brand-logo" alt=""></a>
+            <div class="nav-items">
+                <div class="search">
+                    <input type="text" class="search-box" placeholder="search brand, product">
+                    <button class="search-btn">search</button>
+                </div>
+                <a href="~/Views/Home/Login.cshtml"><img src="Images/user.jpg" alt=""></a>
+                <a href="~/Views/Home/wishlist.cshtml" target="_blank"><img src="Images/heart_logo.png" alt=""></a>
+                <a href="~/Views/Home/Addtocart.cshtml" target="_blank"><img src="Images/cart.png" alt=""></a>
+            </div>
+        </div>
+        <ul class="links-container">
+           
+            <li class="link-item">@Html.ActionLink("Home", "Index", "Home", new { @class = "link active" })
+            <li class="link-item">@Html.ActionLink("SignIn/SignUp", "Register", "Home", new { @class = "link" })
+            <li class="link-item">@Html.ActionLink("Contact", "Contact", "Home", new { @class = "link" })
+            <li class="link-item">@Html.ActionLink("About Us", "About", "Home", new { @class = "link" })
+        </ul>
+    </nav>
+
+    <header class="hero-section">
+        <div class="content">
+            <p class="sub-heading"><i>Best Gadget Collections of all time</p></i>
+        </div>
+    </header>
+
+    <!-- now we make products slides-->
+    <section class="product">
+        <h2 class="product-category">best selling</h2>
+        <!-- products container with n products-->
+        <button class="pre-btn"><img src="Images/arrow.png" alt=""></button>
+        <button class="nxt-btn"><img src="Images/arrow.png" alt=""></button>
+        <div class="product-container">
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="discount-tag">5% off</span>
+                    <a href="TV_Elect.html">
+                        <img src="Image_TV/sonyh.jpg" class="product-thumb" alt="">
+                        <button class="card-btn">View More</button>
+                    </a>
+                </div>
+                <div class="product-info">
+                    <h2 class="product-brand">Sony Speaker</h2>
+                    <p class="product-short-des">a short line about the Gadgets..</p>
+                    <span class="price">&#x20B9;9,490</span><span class="actual-price">&#x20B9;9,990</span>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="discount-tag">20% off</span>
+                    <a href="headphones(product).html">
+                        <img src="Images/boat100.jpg" class="product-thumb" alt="">
+                        <button class="card-btn">View More</button>
+                    </a>
+                </div>
+                <div class="product-info">
+                    <h2 class="product-brand">boAt Rockerz </h2>
+                    <p class="product-short-des">a short line about the Gadgets..</p>
+                    <span class="price">&#x20B9;4500 </span><span class="actual-price">&#x20B9; 5500 </span>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="discount-tag">45% off</span>
+                    <a href="TV_Elect.html">
+                        <img src="Image_TV/samtv1.jpg" class="product-thumb" alt="">
+                        <button class="card-btn">View More</button>
+                    </a>
+                </div>
+                <div class="product-info">
+                    <h2 class="product-brand">LG TV</h2>
+                    <p class="product-short-des">a short line about the Gadgets..</p>
+                    <span class="price">&#x20B9;32,990</span><span class="actual-price">&#x20B9;59,990 </span>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="discount-tag">40% off</span>
+                    <a href="Laptops.html">
+                        <img src="Images/Lapi8.jpg" class="product-thumb" alt="">
+                        <button class="card-btn">View More</button>
+                    </a>
+                </div>
+                <div class="product-info">
+                    <h2 class="product-brand">HP</h2>
+                    <p class="product-short-des">a short line about the Gadgets..</p>
+                    <span class="price">&#x20B9;20,000</span><span class="actual-price">&#x20B9;48,900</span>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="discount-tag">40% off</span>
+                    <a href="Laptops.html">
+                        <img src="Images/Lapi8.jpg" class="product-thumb" alt="">
+                        <button class="card-btn">View More</button>
+                    </a>
+                </div>
+                <div class="product-info">
+                    <h2 class="product-brand">HP</h2>
+                    <p class="product-short-des">a short line about the Gadgets..</p>
+                    <span class="price">&#x20B9;20,000</span><span class="actual-price">&#x20B9;48,900</span>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="discount-tag">40% off</span>
+                    <a href="Laptops.html">
+                        <img src="Images/Lapi8.jpg" class="product-thumb" alt="">
+                        <button class="card-btn">View More</button>
+                    </a>
+                </div>
+                <div class="product-info">
+                    <h2 class="product-brand">HP</h2>
+                    <p class="product-short-des">a short line about the Gadgets..</p>
+                    <span class="price">&#x20B9;20,000</span><span class="actual-price">&#x20B9;48,900</span>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="discount-tag">40% off</span>
+                    <a href="Laptops.html">
+                        <img src="Images/Lapi8.jpg" class="product-thumb" alt="">
+                        <button class="card-btn">View More</button>
+                    </a>
+                </div>
+                <div class="product-info">
+                    <h2 class="product-brand">HP</h2>
+                    <p class="product-short-des">a short line about the Gadgets..</p>
+                    <span class="price">&#x20B9;20,000</span><span class="actual-price">&#x20B9;48,900</span>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+    <section class="product">
+        <!-- products container with n products-->
+        <button class="pre-btn"><img src="Images/arrow.png" alt=""></button>
+        <button class="nxt-btn"><img src="Images/arrow.png" alt=""></button>
+        <div class="product-container">
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="discount-tag">5% off</span>
+                    <a href="TV_Elect.html">
+                        <img src="Image_TV/sonyh.jpg" class="product-thumb" alt="">
+                        <button class="card-btn">View More</button>
+                    </a>
+                </div>
+                <div class="product-info">
+                    <h2 class="product-brand">Sony Speaker</h2>
+                    <p class="product-short-des">a short line about the Gadgets..</p>
+                    <span class="price">&#x20B9;9,490</span><span class="actual-price">&#x20B9;9,990</span>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="discount-tag">20% off</span>
+                    <a href="headphones(product).html">
+                        <img src="Images/boat100.jpg" class="product-thumb" alt="">
+                        <button class="card-btn">View More</button>
+                    </a>
+                </div>
+                <div class="product-info">
+                    <h2 class="product-brand">boAt Rockerz </h2>
+                    <p class="product-short-des">a short line about the Gadgets..</p>
+                    <span class="price">&#x20B9;4500 </span><span class="actual-price">&#x20B9; 5500 </span>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="discount-tag">45% off</span>
+                    <a href="TV_Elect.html">
+                        <img src="Image_TV/samtv1.jpg" class="product-thumb" alt="">
+                        <button class="card-btn">View More</button>
+                    </a>
+                </div>
+                <div class="product-info">
+                    <h2 class="product-brand">LG TV</h2>
+                    <p class="product-short-des">a short line about the Gadgets..</p>
+                    <span class="price">&#x20B9;32,990</span><span class="actual-price">&#x20B9;59,990 </span>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="discount-tag">40% off</span>
+                    <a href="Laptops.html">
+                        <img src="Images/Lapi8.jpg" class="product-thumb" alt="">
+                        <button class="card-btn">View More</button>
+                    </a>
+                </div>
+                <div class="product-info">
+                    <h2 class="product-brand">HP</h2>
+                    <p class="product-short-des">a short line about the Gadgets..</p>
+                    <span class="price">&#x20B9;20,000</span><span class="actual-price">&#x20B9;48,900</span>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="discount-tag">40% off</span>
+                    <a href="Laptops.html">
+                        <img src="Images/Lapi8.jpg" class="product-thumb" alt="">
+                        <button class="card-btn">View More</button>
+                    </a>
+                </div>
+                <div class="product-info">
+                    <h2 class="product-brand">HP</h2>
+                    <p class="product-short-des">a short line about the Gadgets..</p>
+                    <span class="price">&#x20B9;20,000</span><span class="actual-price">&#x20B9;48,900</span>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="discount-tag">40% off</span>
+                    <a href="Laptops.html">
+                        <img src="Images/Lapi8.jpg" class="product-thumb" alt="">
+                        <button class="card-btn">View More</button>
+                    </a>
+                </div>
+                <div class="product-info">
+                    <h2 class="product-brand">HP</h2>
+                    <p class="product-short-des">a short line about the Gadgets..</p>
+                    <span class="price">&#x20B9;20,000</span><span class="actual-price">&#x20B9;48,900</span>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="discount-tag">40% off</span>
+                    <a href="Laptops.html">
+                        <img src="Images/Lapi8.jpg" class="product-thumb" alt="">
+                        <button class="card-btn">View More</button>
+                    </a>
+                </div>
+                <div class="product-info">
+                    <h2 class="product-brand">HP</h2>
+                    <p class="product-short-des">a short line about the Gadgets..</p>
+                    <span class="price">&#x20B9;20,000</span><span class="actual-price">&#x20B9;48,900</span>
+                </div>
+            </div>
+        </div>
+        </div>
+        <!-- Slider JS -->
+        <script>
+                    const productContainers = [...document.querySelectorAll('.product-container')];
+                    const nxtBtn = [...document.querySelectorAll('.nxt-btn')];
+                    const preBtn = [...document.querySelectorAll('.pre-btn')];
+
+                    productContainers.forEach((item, i) => {
+                    let containerDimenstions = item.getBoundingClientRect();
+                    let containerWidth = containerDimenstions.width;
+
+                    nxtBtn[i].addEventListener('click', () => {
+                    item.scrollLeft += containerWidth;
+                    })
+
+                    preBtn[i].addEventListener('click', () => {
+                    item.scrollLeft -= containerWidth;
+                    })
+                    })
+        </script>
+
+    </section>
+    <!-- Deal Section -->
+    <p class="best-deal-link">Best Deal of the Day</p>
+    <section class="collection-container">
+        <a href="products.html" class="collection">
+            <img src="Images/bigSale1.jpg" alt="">
+
+        </a>
+        <a href="products.html" class="collection">
+            <img src="Images/bigSale2.jpg" alt="">
+
+        </a>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-content">
+            <img src="img/light-logo.png" class="logo" alt="">
+            <div class="footer-ul-container">
+                <ul class="category">
+                    <li class="category-title">Contacts</li>
+                    <li><a href="about.html" class="footer-link">About us</a></li>
+                    <br>
+                    <li><a href="contact.html" class="footer-link">Location</a></li>
+                    <br>
+                    <li><a href="mail.html" class="footer-link">Our Email</a></li>
+                </ul>
+            </div>
+        </div>
+        <p class="footer-title">About Company</p>
+        <p class="info">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellat tempore ad suscipit, eos eius quisquam sed optio nisi quaerat fugiat ratione et vero maxime praesentium, architecto minima reiciendis iste quo deserunt assumenda alias ducimus. Ullam odit maxime id voluptates rerum tenetur corporis laboriosam! Cum error ipsum laborum tempore in rerum necessitatibus nostrum nobis modi! Debitis adipisci illum nemo aperiam sed, et accusamus ut officiis. Laborum illo exercitationem quo culpa reprehenderit excepturi distinctio tempore cupiditate praesentium nisi ut iusto, assumenda perferendis facilis voluptas autem fuga sunt ab debitis voluptatum harum eum. Asperiores, natus! Est deserunt incidunt quasi placeat omnis, itaque harum?</p>
+        <p class="info">support emails - gadget@me.com, customersupport@gadget.com</p>
+        <p class="info">telephone - 9938388211, 8893883943</p>
+        <div class="footer-social-container">
+            <div>
+                <a href="#" class="social-link">terms & services</a>
+                <a href="#" class="social-link">privacy page</a>
+            </div>
+            <div>
+                <a href="#" class="social-link">instagram</a>
+                <a href="#" class="social-link">facebook</a>
+                <a href="#" class="social-link">twitter</a>
+            </div>
+        </div>
+        <p class="footer-credit">Best of Best Gadget Collections online website. Copyright &copy; 2022</p>
+    </footer>
+</body>
+</html>

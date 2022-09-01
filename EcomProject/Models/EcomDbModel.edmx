@@ -1,0 +1,575 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="GadgeticWorldModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbl_Address">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="addrid" Type="int" Nullable="false" />
+          <Property Name="CustomerName" Type="varchar" MaxLength="50" />
+          <Property Name="contactPhoneNumber" Type="varchar" MaxLength="20" />
+          <Property Name="city" Type="varchar" MaxLength="100" />
+          <Property Name="streetaddr" Type="varchar" MaxLength="100" />
+          <Property Name="postCode" Type="varchar" MaxLength="12" />
+        </EntityType>
+        <EntityType Name="tbl_BankCard">
+          <Key>
+            <PropertyRef Name="cardNumber" />
+          </Key>
+          <Property Name="cardNumber" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="expiryDate" Type="date" />
+          <Property Name="bank" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="tbl_Coupon">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="COUPON_ID" Type="int" Nullable="false" />
+          <Property Name="COUPON_NAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="DISCOUNT_AMOUNT" Type="int" Nullable="false" />
+          <Property Name="COUPON_EXP" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_CreditCard">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cardNumber" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="organization" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="tbl_DebitCard">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cardNumber" Type="varchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_login">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userEmail" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="userPassword" Type="nvarchar" MaxLength="175" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_Payment">
+          <Key>
+            <PropertyRef Name="Payment_id" />
+          </Key>
+          <Property Name="Payment_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Product_id" Type="int" Nullable="false" />
+          <Property Name="Customer_id" Type="int" Nullable="false" />
+          <Property Name="Product_price" Type="money" Nullable="false" />
+          <Property Name="Payment_type" Type="varchar" MaxLength="50" />
+          <Property Name="Account_no" Type="int" Nullable="false" />
+          <Property Name="Purchase_date" Type="date" />
+        </EntityType>
+        <EntityType Name="tbl_Product">
+          <Key>
+            <PropertyRef Name="Product_id" />
+          </Key>
+          <Property Name="Product_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Product_img" Type="varchar" MaxLength="1000" />
+          <Property Name="Product_Name" Type="nvarchar" MaxLength="170" Nullable="false" />
+          <Property Name="Available_Model" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Product_Description" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Product_Price" Type="money" Nullable="false" />
+          <Property Name="Product_Quantity" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_signup">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userName" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="phoneNum" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="userPassword" Type="nvarchar" MaxLength="170" Nullable="false" />
+          <Property Name="C_userPassword" Type="nvarchar" MaxLength="170" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Address__id__73BA3083">
+          <End Role="tbl_login" Type="Self.tbl_login" Multiplicity="1" />
+          <End Role="tbl_Address" Type="Self.tbl_Address" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_login">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_Address">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CreditCar__cardN__6A30C649">
+          <End Role="tbl_BankCard" Type="Self.tbl_BankCard" Multiplicity="1" />
+          <End Role="tbl_CreditCard" Type="Self.tbl_CreditCard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_BankCard">
+              <PropertyRef Name="cardNumber" />
+            </Principal>
+            <Dependent Role="tbl_CreditCard">
+              <PropertyRef Name="cardNumber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CreditCard__id__6B24EA82">
+          <End Role="tbl_login" Type="Self.tbl_login" Multiplicity="1" />
+          <End Role="tbl_CreditCard" Type="Self.tbl_CreditCard" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_login">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_CreditCard">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DebitCard__cardN__6EF57B66">
+          <End Role="tbl_BankCard" Type="Self.tbl_BankCard" Multiplicity="1" />
+          <End Role="tbl_DebitCard" Type="Self.tbl_DebitCard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_BankCard">
+              <PropertyRef Name="cardNumber" />
+            </Principal>
+            <Dependent Role="tbl_DebitCard">
+              <PropertyRef Name="cardNumber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DebitCard__id__6FE99F9F">
+          <End Role="tbl_login" Type="Self.tbl_login" Multiplicity="1" />
+          <End Role="tbl_DebitCard" Type="Self.tbl_DebitCard" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_login">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_DebitCard">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Coupon">
+          <End Role="tbl_login" Type="Self.tbl_login" Multiplicity="1" />
+          <End Role="tbl_Coupon" Type="Self.tbl_Coupon" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_login">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_Coupon">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Payment">
+          <End Role="tbl_Product" Type="Self.tbl_Product" Multiplicity="1" />
+          <End Role="tbl_Payment" Type="Self.tbl_Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Product">
+              <PropertyRef Name="Product_id" />
+            </Principal>
+            <Dependent Role="tbl_Payment">
+              <PropertyRef Name="Product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_signup">
+          <End Role="tbl_signup" Type="Self.tbl_signup" Multiplicity="1" />
+          <End Role="tbl_login" Type="Self.tbl_login" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_signup">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_login">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GadgeticWorldModelStoreContainer">
+          <EntitySet Name="tbl_Address" EntityType="Self.tbl_Address" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_BankCard" EntityType="Self.tbl_BankCard" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Coupon" EntityType="Self.tbl_Coupon" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_CreditCard" EntityType="Self.tbl_CreditCard" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_DebitCard" EntityType="Self.tbl_DebitCard" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_login" EntityType="Self.tbl_login" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Payment" EntityType="Self.tbl_Payment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Product" EntityType="Self.tbl_Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_signup" EntityType="Self.tbl_signup" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Address__id__73BA3083" Association="Self.FK__Address__id__73BA3083">
+            <End Role="tbl_login" EntitySet="tbl_login" />
+            <End Role="tbl_Address" EntitySet="tbl_Address" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CreditCar__cardN__6A30C649" Association="Self.FK__CreditCar__cardN__6A30C649">
+            <End Role="tbl_BankCard" EntitySet="tbl_BankCard" />
+            <End Role="tbl_CreditCard" EntitySet="tbl_CreditCard" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CreditCard__id__6B24EA82" Association="Self.FK__CreditCard__id__6B24EA82">
+            <End Role="tbl_login" EntitySet="tbl_login" />
+            <End Role="tbl_CreditCard" EntitySet="tbl_CreditCard" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DebitCard__cardN__6EF57B66" Association="Self.FK__DebitCard__cardN__6EF57B66">
+            <End Role="tbl_BankCard" EntitySet="tbl_BankCard" />
+            <End Role="tbl_DebitCard" EntitySet="tbl_DebitCard" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DebitCard__id__6FE99F9F" Association="Self.FK__DebitCard__id__6FE99F9F">
+            <End Role="tbl_login" EntitySet="tbl_login" />
+            <End Role="tbl_DebitCard" EntitySet="tbl_DebitCard" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Coupon" Association="Self.FK_Coupon">
+            <End Role="tbl_login" EntitySet="tbl_login" />
+            <End Role="tbl_Coupon" EntitySet="tbl_Coupon" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Payment" Association="Self.FK_Payment">
+            <End Role="tbl_Product" EntitySet="tbl_Product" />
+            <End Role="tbl_Payment" EntitySet="tbl_Payment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_signup" Association="Self.FK_signup">
+            <End Role="tbl_signup" EntitySet="tbl_signup" />
+            <End Role="tbl_login" EntitySet="tbl_login" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GadgeticWorldModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tbl_Address">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="addrid" Type="Int32" Nullable="false" />
+          <Property Name="CustomerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="contactPhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="city" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="streetaddr" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="postCode" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbl_login" Relationship="Self.FK__Address__id__73BA3083" FromRole="tbl_Address" ToRole="tbl_login" />
+        </EntityType>
+        <EntityType Name="tbl_BankCard">
+          <Key>
+            <PropertyRef Name="cardNumber" />
+          </Key>
+          <Property Name="cardNumber" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="expiryDate" Type="DateTime" Precision="0" />
+          <Property Name="bank" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbl_CreditCard" Relationship="Self.FK__CreditCar__cardN__6A30C649" FromRole="tbl_BankCard" ToRole="tbl_CreditCard" />
+          <NavigationProperty Name="tbl_login" Relationship="Self.tbl_DebitCard" FromRole="tbl_BankCard" ToRole="tbl_login" />
+        </EntityType>
+        <EntityType Name="tbl_Coupon">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="COUPON_ID" Type="Int32" Nullable="false" />
+          <Property Name="COUPON_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DISCOUNT_AMOUNT" Type="Int32" Nullable="false" />
+          <Property Name="COUPON_EXP" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbl_login" Relationship="Self.FK_Coupon" FromRole="tbl_Coupon" ToRole="tbl_login" />
+        </EntityType>
+        <EntityType Name="tbl_CreditCard">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cardNumber" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="organization" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbl_BankCard" Relationship="Self.FK__CreditCar__cardN__6A30C649" FromRole="tbl_CreditCard" ToRole="tbl_BankCard" />
+          <NavigationProperty Name="tbl_login" Relationship="Self.FK__CreditCard__id__6B24EA82" FromRole="tbl_CreditCard" ToRole="tbl_login" />
+        </EntityType>
+        <EntityType Name="tbl_login">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userEmail" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="userPassword" Type="String" MaxLength="175" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="tbl_Address" Relationship="Self.FK__Address__id__73BA3083" FromRole="tbl_login" ToRole="tbl_Address" />
+          <NavigationProperty Name="tbl_Coupon" Relationship="Self.FK_Coupon" FromRole="tbl_login" ToRole="tbl_Coupon" />
+          <NavigationProperty Name="tbl_CreditCard" Relationship="Self.FK__CreditCard__id__6B24EA82" FromRole="tbl_login" ToRole="tbl_CreditCard" />
+          <NavigationProperty Name="tbl_signup" Relationship="Self.FK_signup" FromRole="tbl_login" ToRole="tbl_signup" />
+          <NavigationProperty Name="tbl_BankCard" Relationship="Self.tbl_DebitCard" FromRole="tbl_login" ToRole="tbl_BankCard" />
+        </EntityType>
+        <EntityType Name="tbl_Payment">
+          <Key>
+            <PropertyRef Name="Payment_id" />
+          </Key>
+          <Property Name="Payment_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Product_id" Type="Int32" Nullable="false" />
+          <Property Name="Customer_id" Type="Int32" Nullable="false" />
+          <Property Name="Product_price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Payment_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Account_no" Type="Int32" Nullable="false" />
+          <Property Name="Purchase_date" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="tbl_Product" Relationship="Self.FK_Payment" FromRole="tbl_Payment" ToRole="tbl_Product" />
+        </EntityType>
+        <EntityType Name="tbl_Product">
+          <Key>
+            <PropertyRef Name="Product_id" />
+          </Key>
+          <Property Name="Product_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Product_img" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="Product_Name" Type="String" MaxLength="170" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Available_Model" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Product_Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Product_Price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Product_Quantity" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <NavigationProperty Name="tbl_Payment" Relationship="Self.FK_Payment" FromRole="tbl_Product" ToRole="tbl_Payment" />
+        </EntityType>
+        <EntityType Name="tbl_signup">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="phoneNum" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="userPassword" Type="String" MaxLength="170" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="C_userPassword" Type="String" MaxLength="170" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="tbl_login" Relationship="Self.FK_signup" FromRole="tbl_signup" ToRole="tbl_login" />
+        </EntityType>
+        <Association Name="FK__Address__id__73BA3083">
+          <End Role="tbl_login" Type="Self.tbl_login" Multiplicity="1" />
+          <End Role="tbl_Address" Type="Self.tbl_Address" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_login">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_Address">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CreditCar__cardN__6A30C649">
+          <End Role="tbl_BankCard" Type="Self.tbl_BankCard" Multiplicity="1" />
+          <End Role="tbl_CreditCard" Type="Self.tbl_CreditCard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_BankCard">
+              <PropertyRef Name="cardNumber" />
+            </Principal>
+            <Dependent Role="tbl_CreditCard">
+              <PropertyRef Name="cardNumber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Coupon">
+          <End Role="tbl_login" Type="Self.tbl_login" Multiplicity="1" />
+          <End Role="tbl_Coupon" Type="Self.tbl_Coupon" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_login">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_Coupon">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CreditCard__id__6B24EA82">
+          <End Role="tbl_login" Type="Self.tbl_login" Multiplicity="1" />
+          <End Role="tbl_CreditCard" Type="Self.tbl_CreditCard" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_login">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_CreditCard">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_signup">
+          <End Role="tbl_signup" Type="Self.tbl_signup" Multiplicity="1" />
+          <End Role="tbl_login" Type="Self.tbl_login" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_signup">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_login">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Payment">
+          <End Role="tbl_Product" Type="Self.tbl_Product" Multiplicity="1" />
+          <End Role="tbl_Payment" Type="Self.tbl_Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Product">
+              <PropertyRef Name="Product_id" />
+            </Principal>
+            <Dependent Role="tbl_Payment">
+              <PropertyRef Name="Product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="tbl_DebitCard">
+          <End Role="tbl_BankCard" Type="Self.tbl_BankCard" Multiplicity="0..1" />
+          <End Role="tbl_login" Type="Self.tbl_login" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="GadgeticWorldEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_Address" EntityType="Self.tbl_Address" />
+          <EntitySet Name="tbl_BankCard" EntityType="Self.tbl_BankCard" />
+          <EntitySet Name="tbl_Coupon" EntityType="Self.tbl_Coupon" />
+          <EntitySet Name="tbl_CreditCard" EntityType="Self.tbl_CreditCard" />
+          <EntitySet Name="tbl_login" EntityType="Self.tbl_login" />
+          <EntitySet Name="tbl_Payment" EntityType="Self.tbl_Payment" />
+          <EntitySet Name="tbl_Product" EntityType="Self.tbl_Product" />
+          <EntitySet Name="tbl_signup" EntityType="Self.tbl_signup" />
+          <AssociationSet Name="FK__Address__id__73BA3083" Association="Self.FK__Address__id__73BA3083">
+            <End Role="tbl_login" EntitySet="tbl_login" />
+            <End Role="tbl_Address" EntitySet="tbl_Address" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CreditCar__cardN__6A30C649" Association="Self.FK__CreditCar__cardN__6A30C649">
+            <End Role="tbl_BankCard" EntitySet="tbl_BankCard" />
+            <End Role="tbl_CreditCard" EntitySet="tbl_CreditCard" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Coupon" Association="Self.FK_Coupon">
+            <End Role="tbl_login" EntitySet="tbl_login" />
+            <End Role="tbl_Coupon" EntitySet="tbl_Coupon" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CreditCard__id__6B24EA82" Association="Self.FK__CreditCard__id__6B24EA82">
+            <End Role="tbl_login" EntitySet="tbl_login" />
+            <End Role="tbl_CreditCard" EntitySet="tbl_CreditCard" />
+          </AssociationSet>
+          <AssociationSet Name="FK_signup" Association="Self.FK_signup">
+            <End Role="tbl_signup" EntitySet="tbl_signup" />
+            <End Role="tbl_login" EntitySet="tbl_login" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Payment" Association="Self.FK_Payment">
+            <End Role="tbl_Product" EntitySet="tbl_Product" />
+            <End Role="tbl_Payment" EntitySet="tbl_Payment" />
+          </AssociationSet>
+          <AssociationSet Name="tbl_DebitCard" Association="Self.tbl_DebitCard">
+            <End Role="tbl_BankCard" EntitySet="tbl_BankCard" />
+            <End Role="tbl_login" EntitySet="tbl_login" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GadgeticWorldModelStoreContainer" CdmEntityContainer="GadgeticWorldEntities">
+          <EntitySetMapping Name="tbl_Address">
+            <EntityTypeMapping TypeName="GadgeticWorldModel.tbl_Address">
+              <MappingFragment StoreEntitySet="tbl_Address">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="addrid" ColumnName="addrid" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="contactPhoneNumber" ColumnName="contactPhoneNumber" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="streetaddr" ColumnName="streetaddr" />
+                <ScalarProperty Name="postCode" ColumnName="postCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_BankCard">
+            <EntityTypeMapping TypeName="GadgeticWorldModel.tbl_BankCard">
+              <MappingFragment StoreEntitySet="tbl_BankCard">
+                <ScalarProperty Name="cardNumber" ColumnName="cardNumber" />
+                <ScalarProperty Name="expiryDate" ColumnName="expiryDate" />
+                <ScalarProperty Name="bank" ColumnName="bank" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Coupon">
+            <EntityTypeMapping TypeName="GadgeticWorldModel.tbl_Coupon">
+              <MappingFragment StoreEntitySet="tbl_Coupon">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="COUPON_ID" ColumnName="COUPON_ID" />
+                <ScalarProperty Name="COUPON_NAME" ColumnName="COUPON_NAME" />
+                <ScalarProperty Name="DISCOUNT_AMOUNT" ColumnName="DISCOUNT_AMOUNT" />
+                <ScalarProperty Name="COUPON_EXP" ColumnName="COUPON_EXP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_CreditCard">
+            <EntityTypeMapping TypeName="GadgeticWorldModel.tbl_CreditCard">
+              <MappingFragment StoreEntitySet="tbl_CreditCard">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="cardNumber" ColumnName="cardNumber" />
+                <ScalarProperty Name="organization" ColumnName="organization" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_login">
+            <EntityTypeMapping TypeName="GadgeticWorldModel.tbl_login">
+              <MappingFragment StoreEntitySet="tbl_login">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="userEmail" ColumnName="userEmail" />
+                <ScalarProperty Name="userPassword" ColumnName="userPassword" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Payment">
+            <EntityTypeMapping TypeName="GadgeticWorldModel.tbl_Payment">
+              <MappingFragment StoreEntitySet="tbl_Payment">
+                <ScalarProperty Name="Payment_id" ColumnName="Payment_id" />
+                <ScalarProperty Name="Product_id" ColumnName="Product_id" />
+                <ScalarProperty Name="Customer_id" ColumnName="Customer_id" />
+                <ScalarProperty Name="Product_price" ColumnName="Product_price" />
+                <ScalarProperty Name="Payment_type" ColumnName="Payment_type" />
+                <ScalarProperty Name="Account_no" ColumnName="Account_no" />
+                <ScalarProperty Name="Purchase_date" ColumnName="Purchase_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Product">
+            <EntityTypeMapping TypeName="GadgeticWorldModel.tbl_Product">
+              <MappingFragment StoreEntitySet="tbl_Product">
+                <ScalarProperty Name="Product_id" ColumnName="Product_id" />
+                <ScalarProperty Name="Product_img" ColumnName="Product_img" />
+                <ScalarProperty Name="Product_Name" ColumnName="Product_Name" />
+                <ScalarProperty Name="Available_Model" ColumnName="Available_Model" />
+                <ScalarProperty Name="Product_Description" ColumnName="Product_Description" />
+                <ScalarProperty Name="Product_Price" ColumnName="Product_Price" />
+                <ScalarProperty Name="Product_Quantity" ColumnName="Product_Quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_signup">
+            <EntityTypeMapping TypeName="GadgeticWorldModel.tbl_signup">
+              <MappingFragment StoreEntitySet="tbl_signup">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="phoneNum" ColumnName="phoneNum" />
+                <ScalarProperty Name="userPassword" ColumnName="userPassword" />
+                <ScalarProperty Name="C_userPassword" ColumnName="C_userPassword" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="tbl_DebitCard" TypeName="GadgeticWorldModel.tbl_DebitCard" StoreEntitySet="tbl_DebitCard">
+            <EndProperty Name="tbl_BankCard">
+              <ScalarProperty Name="cardNumber" ColumnName="cardNumber" />
+            </EndProperty>
+            <EndProperty Name="tbl_login">
+              <ScalarProperty Name="id" ColumnName="id" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

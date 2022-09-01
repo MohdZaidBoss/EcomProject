@@ -1,0 +1,189 @@
+﻿@model EcomProject.Models.tbl_signup
+@model EcomProject.Models.tbl_login
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | CREATIVE</title>
+    <link rel="stylesheet" href="css/home.css">
+    <link href="~/CustomStyleSheet/nav.css" rel="stylesheet" />
+    <link href="~/CustomStyleSheet/home.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav">
+            <a href="index.html"><img src="Images/web_logo.jpg" class="brand-logo" alt=""></a>
+            <div class="nav-items">
+                <div class="search">
+                    <input type="text" class="search-box" placeholder="search brand, product">
+                    <button class="search-btn">search</button>
+                </div>
+                <a href="~/Views/Home/Login.cshtml"><img src="Images/user.jpg" alt=""></a>
+                <a href="~/Views/Home/wishlist.cshtml" target="_blank"><img src="Images/heart_logo.png" alt=""></a>
+                <a href="~/Views/Home/Addtocart.cshtml" target="_blank"><img src="Images/cart.png" alt=""></a>
+            </div>
+        </div>
+        <ul class="links-container">
+
+            <li class="link-item">@Html.ActionLink("Home", "Index", "Home", new { @class = "link " })
+            <li class="link-item">@Html.ActionLink("SignIn/SignUp", "Register", "Home", new { @class = "link active" })
+            <li class="link-item">@Html.ActionLink("Contact", "Contact", "Home", new { @class = "link" })
+            <li class="link-item">@Html.ActionLink("About Us", "About", "Home", new { @class = "link" })
+        </ul>
+    </nav>
+    <br>
+    <br>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <div class="cont">
+        <div class="form sign-in">
+            <h6>Welcome</h6>
+
+            @using (Html.BeginForm("Login", "Home", FormMethod.Get))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <form action="" method="GET">
+                    <label>
+                        <span>Email</span>
+                        @Html.EditorFor(model => model.userEmail, new { htmlAttributes = new { @placeholder = "Enter Name" } })
+                        @Html.ValidationMessageFor(model => model.userName, "", new { @class = "text-danger" })
+                    </label>
+                    <label>
+                        <span>Password</span>
+                        <input type="password" placeholder="Your Password" id="userPassword" required autocomplete="off" />
+                    </label>
+                    <p class="forgot-pass"><a href="notFoundPage.html">Forgot password?</a></p>
+                    <button type="submit" class="submit" id="loginSumbit">Sign In</button>
+                </form>
+            }
+        </div>
+        <div class="sub-cont">
+            <div class="img">
+                <div class="img__text m--up">
+
+                    <h3>Don't have an account? Please Sign up!<h3>
+                </div>
+                <div class="img__text m--in">
+
+                    <h3>If you already have an account, Please sign in.<h3>
+                </div>
+                <div class="img__btn">
+                    <span class="m--up">Sign Up</span>
+                    <span class="m--in">Sign In</span>
+                </div>
+            </div>
+            <div class="form sign-up">
+                @*<small class="errorMesg" id="errorMesg">Please Fill All the Required Field</small>
+                    <small class="successMesg" id="successMesg">Successfully Registered</small>*@
+                <h6>Create your Account</h6>
+                @using (Html.BeginForm("Register", "Home", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <form action="index.html" method="get">
+                        <label>
+                            <span>Name</span>
+                            @Html.EditorFor(model => model.userName, new { htmlAttributes = new { @placeholder = "Enter Your Name" } })
+                            @Html.ValidationMessageFor(model => model.userName, "", new { @class = "text-danger" })
+                        </label>
+                        <label>
+                            <span>Email</span>
+                            @Html.EditorFor(model => model.email, new { htmlAttributes = new { @placeholder = "Enter Your Email" } })
+                            @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                        </label>
+                        <label>
+                            <span>Phone Number</span>
+                            <input type="text" id="phoneNum" name="phoneNumber" placeholder="Your Phone Number" required autocomplete="off" />
+                        </label>
+                        <label>
+                            <span>Password</span>
+                            <input type="password" id="userRegPassword" name="password" placeholder="Your Password" required autocomplete="off" />
+                        </label>
+                        <label>
+                            <span>Confirm Password</span>
+                            <input type="password" id="C_userPassword" name="C_password" placeholder="Retype Your Password" required autocomplete="off" />
+                        </label>
+                        <button type="button" class="submit" id="submitButton">Register</button>
+                    </form>
+                }
+                </div>
+            </div>
+        </div>
+        <script>
+            document.querySelector('.img__btn').addEventListener('click', function () {
+                document.querySelector('.cont').classList.toggle('s--signup');
+            });
+        </script>
+
+
+        @*@using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    <h4>tbl_signup</h4>
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.userName, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.userName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.userName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.email, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.phoneNum, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.phoneNum, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.phoneNum, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.userPassword, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.userPassword, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.userPassword, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.C_userPassword, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.C_userPassword, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.C_userPassword, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Create" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+            }*@
+
+    </body>
+</html>
